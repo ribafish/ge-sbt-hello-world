@@ -5,6 +5,7 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / organization := "com.example"
 ThisBuild / organizationName := "example"
 
+/*
 Global / gradleEnterpriseConfiguration :=
     GradleEnterpriseConfiguration(
         server = Server(
@@ -30,6 +31,7 @@ Global / gradleEnterpriseConfiguration :=
         )
     )
 
+ */
 
 lazy val helloWorldProj = (project in file("."))
     .aggregate(lib1, lib2)
