@@ -1,3 +1,4 @@
 resolvers += Resolver.mavenLocal
-lazy val geVersion = "0.1-rc-1"
+lazy val geVersion = "0.10"
+//lazy val geVersion = "0.9"
 addSbtPlugin("com.gradle" % "sbt-gradle-enterprise" % geVersion)

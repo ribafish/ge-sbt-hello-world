@@ -1,6 +1,6 @@
 import Dependencies._
 
-ThisBuild / scalaVersion := "2.12.8"
+ThisBuild / scalaVersion := "2.12.15"
 ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / organization := "com.example"
 ThisBuild / organizationName := "example"
@@ -11,23 +11,25 @@ Global / gradleEnterpriseConfiguration :=
             url = Some(url("https://e.grdev.net"))
         ),
         buildScan = BuildScan(
-            obfuscation = Obfuscation(
-                username = _.reverse,
-                hostname = _.toCharArray.map(_.getNumericValue).mkString("-"),
-                ipAddresses = _.map(_ => "0.0.0.0")
-            ),
+//            obfuscation = Obfuscation(
+//                username = _.reverse,
+//                hostname = _.toCharArray.map(_.getNumericValue).mkString("-"),
+//                ipAddresses = _.map(_ => "0.0.0.0")
+//            ),
             tags = Set(
-                if (sys.env.contains("CI")) "CI" else "Local",
-                sys.props("os.name")
+//                "buildSbtTag"
+//                if (sys.env.contains("CI")) "CI" else "Local",
+//                sys.props("os.name")
             ),
-            links = Map(
-                "VCS" -> url(s"https://github.com/myorg/sample/tree/${sys.props("vcs.branch")}")
-            ),
-            values = Map(
-                "Scala version" -> scalaVersion.value
-            )
+//            links = Map(
+//                "VCS" -> url(s"https://github.com/myorg/sample/tree/${sys.props("vcs.branch")}")
+//            ),
+//            values = Map(
+//                "Scala version" -> scalaVersion.value
+//            )
         )
     )
+
 
 lazy val helloWorldProj = (project in file("."))
     .aggregate(lib1, lib2)
@@ -35,7 +37,7 @@ lazy val helloWorldProj = (project in file("."))
     .settings(
         name := "hello-world-test",
         libraryDependencies += scalaTest % Test,
-        hello := {
+        helloTask := {
             println("Hello from task!")
         }
     )
@@ -52,6 +54,6 @@ lazy val lib2 = (project in file("lib2"))
         name := "lib2",
     )
 
-lazy val hello = taskKey[Unit]("A hello task =)")
+lazy val helloTask = taskKey[Unit]("A hello task =)")
 
 
